@@ -1,0 +1,97 @@
+.container {
+  width: 680px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+/*-----------Data Section----------*/
+
+#data-section {
+  float: left;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding-bottom: 2em;
+}
+
+ul {
+  list-style: none;
+  padding: 2em 2em 0em 2em;
+}
+
+input[type="submit"] {
+  margin-left: 7em;
+  margin-right: 1em;
+  margin-top: 1em;
+}
+
+ul li {
+  margin-bottom: 1em;
+}
+
+#second-li {
+  margin-left: 2.9em;
+}
+
+#third-li {
+  margin-left: 0.2em;
+}
+
+#data-section h2 {
+  border-bottom: 1px solid #333;
+  margin: 0;
+  padding: 0.5em 0 0.5em 1.2em;
+}
+
+/*-------------Charges Section--------------*/
+
+#charges-section,
+#earnings-section {
+  float: right;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding-bottom: 2em;
+}
+
+#charges-section h2,
+#earnings-section h2 {
+  margin: 0;
+  border-bottom: 1px solid #333;
+  padding: 0.5em 1em;
+}
+
+#charges-section p,
+#earnings-section p {
+  margin-left: 1.5em;
+}
+
+
+/*-------------Earnings Section--------------*/
+
+#earnings-section {
+  clear: right;
+  margin-top: 2em;
+}
+
+#earnings-section h2 {
+  padding: 0.5em 0 0.5em 0.9em;
+}
+
+#earnings-section p {
+  padding: 0 1em 0 0.5em;
+  margin-left: 1em;
+  margin-right: 1.75em;
+  
+}
+
+section > button {
+  clear: both;
+  float:right;
+  display: block;
+  margin-top: 2em;
+}
+
