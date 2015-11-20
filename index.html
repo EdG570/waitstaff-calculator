@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,52 +9,59 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.3.15/angular-messages.min.js"></script>
+        <script src="js/main.js"></script>
     </head>
     <body>
-        <section class="container">
+        <section class="container" ng-controller="CalcCtrl">
             <h1>Waitstaff Calculator</h1>
 
             <div id="data-section">
                 <h2>Enter the Meal Details</h2>
 
-                <form name="myForm">
+                <div ng-if="myForm.$submitted" ng-messages="myForm.$error">
+                    <span class="error" ng-message="required">All fields are required!</span>
+                </div>
+
+                <form name="myForm" ng-submit="submit()" novalidate>
                     <ul>
                         <li>
                             <label for="meal-price">Base Meal Price: $</label>
-                            <input type="text" name="meal-price">
+                            <input type="number" name="meal-price" id="price" ng-model="price" required>
                         </li>
                         <li id="second-li">
                             <label for="tax">Tax Rate: %</label>
-                            <input type="text" name="tax">
+                            <input type="number" name="tax" id="tax" required ng-model="tax">
                         </li>
                         <li id="third-li">
                             <label for="tip">Tip Percentage: %</label>
-                            <input type="text" name="tip">
+                            <input type="number" name="tip" id="tip" required ng-model="tip">
                         </li>
                     </ul>
                     <input type="Submit">
-                    <button>Cancel</button>
+                    <input type="reset" value="Cancel">
                 </form>
             </div>
 
             <div id="charges-section">
                 <h2>Customer Charges</h2>
 
-                <p>Subtotal: 0.00</p>
-                <p>Tip: 0.00</p>
-                <p>Total: 0.00</p>
+                <p>Subtotal: {{ subTotal || 0.00 | currency }}</p>
+                <p>Tip: {{ tipTotal || 0.00 | currency }}</p>
+                <p>Total: {{ total || 0.00 | currency }}</p>
             </div>
             <div id="earnings-section">
                 <h2>My Earnings</h2>
 
-                <p>Tip Total: 0.00</p>
-                <p>Meal Count: 0</p>
-                <p>Average Tip Per Meal: 0.00</p>
+                <p>Tip Total: {{ tipsCount || 0.00 | currency }}</p>
+                <p>Meal Count: {{ mealsCount || 0 }}</p>
+                <p>Average Tip Per Meal: {{ avgTip || 0.00 | currency }}</p>
             </div>
           
-            <button>Reset</button>
+            <button ng-click="clearData()">Reset</button>
         </section>
-        <script src="js/main.js"></script>
+        
     </body>
 </html>
