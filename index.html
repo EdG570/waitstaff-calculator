@@ -9,16 +9,21 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.3.15/angular-messages.min.js"></script>
         <script src="js/main.js"></script>
     </head>
     <body>
-        <section class="container" ng-controller="CalcCtrl">
+        <section id="content-section" class="container" ng-controller="CalcCtrl">
+            <img id="logo" src="img/logo.svg" alt="Waitstaff logo">
             <h1>Waitstaff Calculator</h1>
 
             <div id="data-section">
+                <img id="meal-img" src="img/meal.svg" alt="fork and knife">
                 <h2>Enter the Meal Details</h2>
 
                
@@ -53,6 +58,7 @@
             </div>
 
             <div id="charges-section">
+                <img id="charges-img" src="img/charges.svg" alt="cash register image">
                 <h2>Customer Charges</h2>
 
                 <p>Subtotal: <span class="white">{{ subTotal || 0.00 | currency }}</span></p>
@@ -60,11 +66,12 @@
                 <p>Total: <span class="white">{{ total || 0.00 | currency }}</span></p>
             </div>
             <div id="earnings-section">
+                <img id="earnings-img" src="img/earnings.svg" alt="piggy bank image">
                 <h2>My Earnings</h2>
 
-                <p>Tip Total: {{ tipsCount || 0.00 | currency }}</p>
-                <p>Meal Count: {{ mealsCount || 0 }}</p>
-                <p>Average Tip Per Meal: {{ avgTip || 0.00 | currency }}</p>
+                <p>Tip Total: <span class="white">{{ tipsCount || 0.00 | currency }}</span></p>
+                <p>Meal Count: <span class="white">{{ mealsCount || 0 }}</span></p>
+                <p>Average Tip Per Meal: <span class="white">{{ avgTip || 0.00 | currency }}</span></p>
             </div>
           
             <button ng-click="clearData()">Reset</button>
