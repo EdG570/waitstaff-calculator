@@ -1,45 +1,54 @@
 
 (function() {
-  var app = angular.module('myApp', ['ngMessages']);
+  var app = angular.module('myApp', []);
 
   app.controller('CalcCtrl', ['$scope', function($scope) {
       $scope.tipsCount = 0;
       $scope.mealsCount = 0;
      
-
+      //On submit performs calculations for Customer Charges and My Earnings
       $scope.submit = function() {
-
-        $scope.price = document.getElementById('price').value;
-        $scope.tax = document.getElementById('tax').value;
-        $scope.tip = document.getElementById('tip').value;
-
+        //Calculates subtotal from base price and tax %
         $scope.subTotal = parseInt($scope.price) + (parseInt($scope.price) * (parseInt($scope.tax) / 100));
+        
+        //Calculates tip cost
         $scope.tipTotal = parseInt($scope.price) * (parseInt($scope.tip) / 100);
+
+        //Calculates total cost of tip + subtotal
         $scope.total = $scope.subTotal + $scope.tipTotal;
 
+        //Keeps a running tally of total tips
         $scope.tipsCount += $scope.tipTotal;
+
+        //Keeps count of number of meals served
         $scope.mealsCount++;
+
+        //Calculates avg tip
         $scope.avgTip = $scope.tipsCount / $scope.mealsCount;
 
-        document.getElementById('price').value = '';
-        document.getElementById('tax').value = '';
-        document.getElementById('tip').value = '';
+        //Calls function to clear input fields
+        $scope.clearInputs();
 
       };
 
+      //Clears form input fields
+      $scope.clearInputs = function() {
+        $scope.price = null;
+        $scope.tax = null;
+        $scope.tip = null;
+      };
 
+      //Resets all data
       $scope.clearData = function() {
-        $scope.subTotal = '';
-        $scope.tipTotal = '';
-        $scope.total = '';
+        $scope.subTotal = null;
+        $scope.tipTotal = null;
+        $scope.total = null;
 
         $scope.tipsCount = 0;
         $scope.mealsCount = 0;
-        $scope.avgTip = 0;
+        $scope.avgTip = 0; 
 
-        document.getElementById('price').value = '';
-        document.getElementById('tax').value = '';
-        document.getElementById('tip').value = '';
+        $scope.clearInputs();
 
       };
   }]);

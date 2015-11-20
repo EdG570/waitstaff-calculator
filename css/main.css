@@ -1,5 +1,12 @@
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/background-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .container {
-  width: 680px;
+  width: 760px;
   margin: 0 auto;
 }
 
@@ -7,15 +14,39 @@ h1 {
   text-align: center;
   margin-bottom: 2em;
   margin-top: 2em;
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: 300;
 }
+
+input:focus {
+  outline: none;
+}
+
+input {
+  border-radius: 5px;
+}
+
+.white {
+  color: #fff;
+}
+
+h2 {
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
 
 /*-----------Data Section----------*/
 
 #data-section {
   float: left;
-  border: 1px solid #333;
+  border: 1px solid #fff;
   border-radius: 5px;
   padding-bottom: 2em;
+  background-color: rgba(175, 229, 224, 0.9);
+  color: #333;
 }
 
 ul {
@@ -27,6 +58,15 @@ input[type="submit"] {
   margin-left: 7em;
   margin-right: 1em;
   margin-top: 1em;
+  background-color: #fff;
+  border: none;
+  padding: 0.25em 1em;
+}
+
+input[type="reset"] {
+  background-color: #eee;
+  padding: 0.25em 1em;
+  border: none;
 }
 
 ul li {
@@ -42,9 +82,14 @@ ul li {
 }
 
 #data-section h2 {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #fff;
   margin: 0;
-  padding: 0.5em 0 0.5em 1.2em;
+  text-align: center;
+  padding: 0.5em 0;
+  background-color: rgba(8,102,92, 0.5);
+  -webkit-box-shadow:0px 1px 1px #08665C;
+ -moz-box-shadow:0px 1px 1px #08665C;
+ box-shadow:0px 1px 1px #08665C;
 }
 
 /*-------------Charges Section--------------*/
@@ -52,16 +97,18 @@ ul li {
 #charges-section,
 #earnings-section {
   float: right;
-  border: 1px solid #333;
+  border: 1px solid #fff;
   border-radius: 5px;
   padding-bottom: 2em;
+  background-color: rgba(175, 229, 224, 0.9);
 }
 
 #charges-section h2,
 #earnings-section h2 {
   margin: 0;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #fff;
   padding: 0.5em 1em;
+  background-color: rgba(8,102,92, 0.5);
 }
 
 #charges-section p,
