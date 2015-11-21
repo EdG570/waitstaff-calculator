@@ -1,6 +1,6 @@
 
 (function() {
-  var app = angular.module('myApp', []);
+  var app = angular.module('myApp', ['ngMessages']);
 
   app.controller('CalcCtrl', ['$scope', function($scope) {
       $scope.tipsCount = 0;
@@ -29,13 +29,15 @@
         //Calls function to clear input fields
         $scope.clearInputs();
 
+        
+
       };
 
       //Clears form input fields
       $scope.clearInputs = function() {
-        $scope.price = null;
-        $scope.tax = null;
-        $scope.tip = null;
+        $scope.price = '';
+        $scope.tax = '';
+        $scope.tip = '';
       };
 
       //Resets all data

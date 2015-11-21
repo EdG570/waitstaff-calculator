@@ -28,30 +28,35 @@
 
                
 
-                <form name="myForm" ng-submit="submit()" novalidate>
+                <form name="myForm" ng-submit="myForm.$valid && submit()" novalidate>
                     <ul>
                         <li>
                             <label for="meal-price">Base Meal Price: $</label>
-                            <input type="number" name="meal-price" id="price" required ng-model="price">
-                            <!--<div class="error" ng-if="myForm.price.$error.required">
-                                <p>This field is required!</p>
-                            </div>-->
+                            <input type="number" name="mealprice" id="price" min="0" required ng-model="price">
+                            <div class="error" ng-if="myForm.$submitted || myForm.mealprice.$dirty" ng-messages="myForm.mealprice.$error">
+                                <p class="move" class="error" ng-message="required">This field is required!</p>
+                                <p class="move" class="error" ng-message="min">Value must be 0 or greater!</p>
+                            </div>
                         </li>
                         <li id="second-li">
                             <label for="tax">Tax Rate: %</label>
-                            <input type="number" name="tax" id="tax" required ng-model="tax">
-                            <!--<div class="error" ng-if="myForm.tax.$error.required">
-                                <p>This field is required!</p>
-                            </div>-->
+                            <input type="number" name="taxrate" id="tax" required min="0" ng-model="tax">
+                            <div class="error" ng-if="myForm.taxrate.$dirty || myForm.$submitted" ng-messages="myForm.taxrate.$error">
+                                <p class="error" ng-message="required">This field is required!</p>
+                                <p class="error" ng-message="min">Value must be 0 or greater!</p>
+                            </div>
                         </li>
                         <li id="third-li">
                             <label for="tip">Tip Percentage: %</label>
-                            <input type="number" name="tip" id="tip" required ng-model="tip">
-                           <!-- <div class="error" ng-if="myForm.tip.$error.required">
-                                <p>This field is required!</p>
-                            </div>-->
+                            <input type="number" name="tipamount" id="tip" required min="0" ng-model="tip">
+                            <div class="error" ng-if="myForm.tipamount.$dirty || myForm.$submitted" ng-messages="myForm.tipamount.$error">
+                                <p class="move" class="error" ng-message="required">This field is required!</p>
+                                <p class="move"class="error" ng-message="min">Value must be 0 or greater!</p>
+                            </div>
                         </li>
                     </ul>
+
+                   
                     <input type="Submit">
                     <input type="reset" value="Cancel">
                 </form>
