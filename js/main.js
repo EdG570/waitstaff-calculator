@@ -1,27 +1,69 @@
 
 (function() {
-  var app = angular.module('myApp', ['ngMessages']);
+  var app = angular.module('myApp', ['ngMessages', 'ngRoute']);
+
+  app.config(function($routeProvider) {
+      $routeProvider.when('/', {
+          templateUrl: '/home.html',
+          controller: 'HomeCtrl as home'
+      })
+      .when('/new-meal', {
+        templateUrl: '/new-meal.html',
+        controller: 'MealCtrl as meal'
+      })
+      .when('/my-earnings', {
+        templateUrl: '/my-earnings.html',
+        controller: 'EarningsCtrl as earnings'
+      })
+      .otherwise('/error', {
+          template: '<h3>Error - Page Not Found</h3>'
+      });
+  });
+ 
+  app.controller('HomeCtrl', function() {
+      
+  });
+
+  app.controller('MealCtrl', function($rootScope) {
+      this.submit = function() {
+        //Calculates subtotal from base price and tax %
+        this.subTotal = parseInt(this.price) + (parseInt(this.price) * (parseInt(this.tax) / 100));
+        
+        //Calculates tip cost
+        this.tipTotal = parseInt(this.price) * (parseInt(this.tip) / 100);
+
+        //Calculates total cost of tip + subtotal
+        this.total = this.subTotal + this.tipTotal;
+
+        $rootScope.tipsCount+= this.tipTotal;
+        $rootScope.mealsCount++;
+        $rootScope.avgTip = $rootScope.tipsCount / $rootScope.mealsCount;
+      };
+
+      $rootScope.tipsCount = 0;
+      $rootScope.mealsCount = 0;
+  });
+
+  app.controller('EarningsCtrl', function() {
+
+  });
+
+
+
+
+
+
+
 
   app.controller('CalcCtrl', ['$scope', function($scope) {
-      $scope.tipsCount = 0;
-      $scope.mealsCount = 0;
+      
+      
      
       //On submit performs calculations for Customer Charges and My Earnings
       $scope.submit = function() {
-        //Calculates subtotal from base price and tax %
-        $scope.subTotal = parseInt($scope.price) + (parseInt($scope.price) * (parseInt($scope.tax) / 100));
         
-        //Calculates tip cost
-        $scope.tipTotal = parseInt($scope.price) * (parseInt($scope.tip) / 100);
 
-        //Calculates total cost of tip + subtotal
-        $scope.total = $scope.subTotal + $scope.tipTotal;
-
-        //Keeps a running tally of total tips
-        $scope.tipsCount += $scope.tipTotal;
-
-        //Keeps count of number of meals served
-        $scope.mealsCount++;
+        
 
         //Calculates avg tip
         $scope.avgTip = $scope.tipsCount / $scope.mealsCount;

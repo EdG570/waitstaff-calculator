@@ -1,0 +1,10 @@
+<div id="earnings-section">
+    <img id="earnings-img" src="img/earnings.svg" alt="piggy bank image">
+    <h2>My Earnings</h2>
+
+    <p>Tip Total: <span class="white">{{ tipsCount || 0.00 | currency }}</span></p>
+    <p>Meal Count: <span class="white">{{ mealsCount || 0 }}</span></p>
+    <p>Average Tip Per Meal: <span class="white">{{ avgTip || 0.00 | currency }}</span></p>
+</div>
+          
+    <button id="reset-btn" ng-click="clearData()">Reset</button>

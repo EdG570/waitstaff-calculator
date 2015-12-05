@@ -1,10 +1,19 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.content-container {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/background-img.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: 'Open Sans', sans-serif;
-  height: 100vh;
+  padding-bottom: 25em;
 }
 
 .container {
@@ -14,12 +23,20 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 1.5em;
-  margin-top: 1.5em;
+  margin-top: 1em;
+  margin-left: -1.5em;
   color: #fff;
   letter-spacing: 2px;
   font-family: 'Sacramento', cursive;
   font-size: 3em;
+  display: inline-block;
+}
+
+.logo-container {
+  width: 55%;
+  margin: 0 auto;
+  text-align: center;
+  height: 8em;
 }
 
 input:focus {
@@ -34,31 +51,62 @@ input, button {
   color: #A86C08;
 }
 
-h2 {
+h2, h3 {
   font-weight: 300;
   color: #fff;
   letter-spacing: 1px;
   font-family: 'Lato', sans-serif;
 }
 
-#logo {
-  width: 5em;
-  position: absolute;
-  left: 8em;
-  bottom: 1.4em;
+h3 {
+  width: 25em;
+  margin: 0 auto;
+  margin-top: 2em;
+  line-height: 1.4;
+  color: #e3f8ce;
 }
 
-#content-section {
+#logo {
+  width: 5em;
+  display: inline-block; 
   position: relative;
+  top: 0.25em;
+  right: 2em;
+}
+
+#nav-links {
+  width: 18em;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+#nav-links > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#nav-links > a:hover {
+  color: orange;
+}
+
+.link-pipe {
+  margin: 0 0.5em;
+  color: #fff;
+}
+
+button:focus {
+  outline: none;
 }
 
 
 /*-----------Data Section----------*/
 
 #data-section {
-  float: left;
-  /*border: 1px solid #fff;*/
+  width: 24em;
+  margin: 0 auto;
+  margin-top: 2em;
   border-radius: 5px;
+  border: 1px solid #fff;
   padding-bottom: 2em;
   background-color: rgba(227,248,206, 0.9);
   color: #333;
@@ -109,8 +157,6 @@ input[type="number"].ng-pristine {
   border: none;
 }
 
-
-
 ul li {
   margin-bottom: 1em;
 }
@@ -152,8 +198,11 @@ ul li {
 
 #charges-section,
 #earnings-section {
-  float: right;
+  width: 20em;
+  margin: 0 auto;
+  margin-top: 2em;
   border-radius: 5px;
+  border: 1px solid #fff;
   padding-bottom: 2em;
   background-color: rgba(227,248,206, 0.9);
   position: relative;
@@ -182,7 +231,6 @@ ul li {
 /*-------------Earnings Section--------------*/
 
 #earnings-section {
-  clear: right;
   margin-top: 2em;
   width: 18.3125em;
 }
@@ -205,10 +253,25 @@ ul li {
   left: 1em;
 }
 
-section > button {
-  clear: both;
-  float:right;
+#reset-btn {
   display: block;
+  margin: 0 auto;
   margin-top: 2em;
+  padding: 0.5em 1em;
+}
+
+/*--------------MEDIA QUERIES---------------*/
+
+@media only screen and (max-width: 1140px) {
+    .container {
+      width: 100%;
+    }
+}
+
+@media only screen and (max-width: 725px) {
+  .logo-container {
+    width: 100%;
+    text-align: center;
+  }
 }
 

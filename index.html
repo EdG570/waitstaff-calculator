@@ -12,75 +12,28 @@
         <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="content-container">
+            <section id="content-section" class="container">
+                <div class="logo-container">
+                    <img id="logo" src="img/logo.svg" alt="Waitstaff logo">
+                    <h1>Waitstaff Calculator</h1>
+                </div>
+                <div id="nav-links">
+                    <a href="#/">Home</a><span class="link-pipe">|</span>
+                    <a href="#/new-meal">New Meal</a><span class="link-pipe">|</span>
+                    <a href="#/my-earnings"> My Earnings</a>
+                </div>
+                
+                
+            </section>
+            <div ng-view></div>
+        </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.3.15/angular-messages.min.js"></script>
+        <script src="https://code.angularjs.org/1.3.16/angular-route.min.js"></script>
         <script src="js/main.js"></script>
-    </head>
-    <body>
-        <section id="content-section" class="container" ng-controller="CalcCtrl">
-            <img id="logo" src="img/logo.svg" alt="Waitstaff logo">
-            <h1>Waitstaff Calculator</h1>
-
-            <div id="data-section">
-                <img id="meal-img" src="img/meal.svg" alt="fork and knife">
-                <h2>Enter the Meal Details</h2>
-
-               
-
-                <form name="myForm" ng-submit="myForm.$valid && submit()" novalidate>
-                    <ul>
-                        <li>
-                            <label for="meal-price">Base Meal Price: $</label>
-                            <input type="number" name="mealprice" id="price" min="0" required ng-model="price">
-                            <div class="error" ng-if="myForm.$submitted || myForm.mealprice.$dirty" ng-messages="myForm.mealprice.$error">
-                                <p class="move" class="error" ng-message="required">This field is required!</p>
-                                <p class="move" class="error" ng-message="min">Value must be 0 or greater!</p>
-                            </div>
-                        </li>
-                        <li id="second-li">
-                            <label for="tax">Tax Rate: %</label>
-                            <input type="number" name="taxrate" id="tax" required min="0" ng-model="tax">
-                            <div class="error" ng-if="myForm.taxrate.$dirty || myForm.$submitted" ng-messages="myForm.taxrate.$error">
-                                <p class="error" ng-message="required">This field is required!</p>
-                                <p class="error" ng-message="min">Value must be 0 or greater!</p>
-                            </div>
-                        </li>
-                        <li id="third-li">
-                            <label for="tip">Tip Percentage: %</label>
-                            <input type="number" name="tipamount" id="tip" required min="0" ng-model="tip">
-                            <div class="error" ng-if="myForm.tipamount.$dirty || myForm.$submitted" ng-messages="myForm.tipamount.$error">
-                                <p class="move" class="error" ng-message="required">This field is required!</p>
-                                <p class="move"class="error" ng-message="min">Value must be 0 or greater!</p>
-                            </div>
-                        </li>
-                    </ul>
-
-                   
-                    <input type="Submit">
-                    <input type="reset" value="Cancel">
-                </form>
-            </div>
-
-            <div id="charges-section">
-                <img id="charges-img" src="img/charges.svg" alt="cash register image">
-                <h2>Customer Charges</h2>
-
-                <p>Subtotal: <span class="white">{{ subTotal || 0.00 | currency }}</span></p>
-                <p>Tip: <span class="white">{{ tipTotal || 0.00 | currency }}</span></p>
-                <p>Total: <span class="white">{{ total || 0.00 | currency }}</span></p>
-            </div>
-            <div id="earnings-section">
-                <img id="earnings-img" src="img/earnings.svg" alt="piggy bank image">
-                <h2>My Earnings</h2>
-
-                <p>Tip Total: <span class="white">{{ tipsCount || 0.00 | currency }}</span></p>
-                <p>Meal Count: <span class="white">{{ mealsCount || 0 }}</span></p>
-                <p>Average Tip Per Meal: <span class="white">{{ avgTip || 0.00 | currency }}</span></p>
-            </div>
-          
-            <button ng-click="clearData()">Reset</button>
-        </section>
-        
     </body>
 </html>
