@@ -27,10 +27,10 @@
   app.controller('MealCtrl', function($rootScope) {
       this.submit = function() {
         //Calculates subtotal from base price and tax %
-        $rootScope.subTotal = parseInt($rootScope.price) + (parseInt($rootScope.price) * (parseInt($rootScope.tax) / 100));
+        $rootScope.subTotal = parseInt(this.price) + (parseInt(this.price) * (parseInt(this.tax) / 100));
         
         //Calculates tip cost
-        $rootScope.tipTotal = parseInt($rootScope.price) * (parseInt($rootScope.tip) / 100);
+        $rootScope.tipTotal = parseInt(this.price) * (parseInt(this.tip) / 100);
 
         //Calculates total cost of tip + subtotal
         $rootScope.total = $rootScope.subTotal + $rootScope.tipTotal;
@@ -40,17 +40,19 @@
         $rootScope.avgTip = $rootScope.tipsCount / $rootScope.mealsCount;
 
         this.clearInputs();
+
+        //Clears form input fields
+        this.clearInputs = function() {
+          meal.price = '';
+          meal.tax = '';
+          meal.tip = '';
+        };
       };
 
       $rootScope.tipsCount = 0;
       $rootScope.mealsCount = 0;
 
-      //Clears form input fields
-      this.clearInputs = function() {
-        $rootScope.price = '';
-        $rootScope.tax = '';
-        $rootScope.tip = '';
-      };
+      
   });
 
   app.controller('EarningsCtrl', function($rootScope) {
