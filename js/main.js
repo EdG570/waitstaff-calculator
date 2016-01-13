@@ -8,11 +8,11 @@
           controller: 'HomeCtrl as home'
       })
       .when('/new-meal', {
-        templateUrl: '/new-meal.html',
+        templateUrl: '/waitstaff-calculator/new-meal.html',
         controller: 'MealCtrl as meal'
       })
       .when('/my-earnings', {
-        templateUrl: '/my-earnings.html',
+        templateUrl: '/waitstaff-calculator/my-earnings.html',
         controller: 'EarningsCtrl as earnings'
       })
       .otherwise('/error', {
