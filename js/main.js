@@ -4,7 +4,7 @@
 
   app.config(function($routeProvider) {
       $routeProvider.when('/', {
-          templateUrl: '/home.html',
+          templateUrl: '/waitstaff-calculator/home.html',
           controller: 'HomeCtrl as home'
       })
       .when('/new-meal', {
